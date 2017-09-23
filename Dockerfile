@@ -39,6 +39,9 @@ ENV DB_PASS ttrss
 # auth method, options are: internal, ldap
 ENV AUTH_METHOD internal
 
+# log method, options are: sql, php, syslog
+ENV LOG_DESTINATION php
+
 # always re-configure database with current ENV when RUNning container, then monitor all services
 ADD configure-db.php /configure-db.php
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf

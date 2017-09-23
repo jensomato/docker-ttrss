@@ -123,6 +123,11 @@ foreach ($config as $name => $value) {
     $contents = preg_replace('/(define\s*\(\'' . $name . '\',\s*)(.*)(\);)/', '$1"' . $value . '"$3', $contents);
 }
 
+if(getenv('LOG_DESTINATION') == "php") {
+    $config['LOG_DESTINATION'] = '';
+} else {
+    $config['LOG_DESTINATION'] = env("LOG_DESTINATION","");
+}    
 file_put_contents($confpath, $contents);
 
 function env($name, $default = null)
